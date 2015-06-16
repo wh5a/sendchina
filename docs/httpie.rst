@@ -58,7 +58,7 @@ the server in a web browser.
 .. code-block:: sh
 
    $ http -b -a api-test:apitest POST \
-       http://162.243.85.198/api/|version|/orders/ < order.json
+       http://162.243.85.198/api/1.0/orders/ < order.json
 
 Here we login as ``api-test`` whose password is ``apitest``. This
 account has a few hunderd pounds of deposit for testing purposes. The
@@ -124,7 +124,7 @@ Once we have the order ``id``, we can query the server for the order's label URL
 .. code-block:: sh
 
    $ http -b -a api-test:apitest GET \
-       http://162.243.85.198/api/|version|/orders/9390/
+       http://162.243.85.198/api/1.0/orders/9390/
 
 Note that the trailing ``/`` is required, or a 301 Redirect will be returned.
 

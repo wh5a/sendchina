@@ -66,6 +66,6 @@ our website, you must do so by clicking the *Log in* link in the upper
 right corner.
 
 As a first step, try to log into
-`http://162.243.85.198/api/|version|/orders/
-<http://162.243.85.198/api/|version|/orders/>`_. Read on to find a json data
+`http://162.243.85.198/api/1.0/orders/
+<http://162.243.85.198/api/1.0/orders/>`_. Read on to find a json data
 example which can be POSTed either in a web browser or in raw HTTP requests.
