@@ -50,10 +50,19 @@ GET /products/       Return a list of products
 Authentication
 --------------------
 
-Currently only `HTTP Basic Authentication
-<http://tools.ietf.org/html/rfc2617>`_ is supported. Users sign in
-with their username and password. Other authentication methods are
-being worked on.
+Every user must apply for API access. Once your API access is granted,
+you will be automatically assigned a token which is available in the
+user profile on Send2China web server.
+
+The API supports both `HTTP Basic Authentication
+<http://tools.ietf.org/html/rfc2617>`_ and token based
+authentication. In basic authentication, the username and password are
+provided explicitly. We recommend token authentication which offers
+better security. The token should be included in the ``Authorization``
+HTTP header, and be prefixed by the string literal ``Token`` with
+whitespace separating the two strings. For example,
+
+``Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b``
 
 
 Testing API

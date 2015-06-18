@@ -112,7 +112,7 @@ different, unique number.
     }
 
 In the above the ``http`` command we passed ``-b`` to show the
-response body only. Your program must check the HTTP status code in
+response body only. Your program, however, must check the HTTP status code in
 the response header which indicates success or failure of the order. If
 the order failed, the response body will contain helpful error messages.
 
@@ -123,10 +123,12 @@ Once we have the order ``id``, we can query the server for the order's label URL
 
 .. code-block:: sh
 
-   $ http -b -a api-test:apitest GET \
-       http://162.243.85.198/api/1.0/orders/9390/
+   $ http -b GET http://162.243.85.198/api/1.0/orders/9390/ \
+      "Authorization: Token 2886a473a9eff33e6b0268e3528fcc88857492aa"
 
-Note that the trailing ``/`` is required, or a 301 Redirect will be returned.
+Note that the trailing ``/`` is required, or a 301 Redirect will be
+returned. Instead of passing my username and password, here we obtained
+API token and showed its usage.
 
 .. code-block:: json
 
