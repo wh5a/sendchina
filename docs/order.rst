@@ -24,15 +24,15 @@ Order
 |**product_id***        |integer|Must match a valid product id listed in the                         |
 |                       |       |:ref:`/products/<intro>` API endpoint.                              |
 |                       |       |                                                                    |
-|                       |       |A **product** is a combination of one or more services that ship  s |
-|                       |       |packets from A to B. A product has an ``id`` and a ``title``,       |
-|                       |       |which identifies the services included in this product.             |
+|                       |       |A **product** is a combination of one or more services that ships   |
+|                       |       |packets from A to B. A product has an ``id`` and a ``title``, which |
+|                       |       |identifies the services included in this product.                   |
 |                       |       |                                                                    |
 |                       |       |The product list on the production server diverges from the test    |
 |                       |       |server. We recommend that you maintain two separate local           |
-|                       |       |copies. Because a product ``id`` never changes, the client code     |
-|                       |       |only needs to be changed when we notify you of addition or remov  al|
-|                       |       |of products.                                                        |
+|                       |       |copies. Because a product ``id`` never changes, the client code only|
+|                       |       |needs to be changed when we notify you of addition or removal of    |
+|                       |       |products.                                                           |
 +-----------------------+-------+--------------------------------------------------------------------+
 |**name***              |string |Sender name                                                         |
 +-----------------------+       +--------------------------------------------------------------------+
@@ -98,17 +98,21 @@ A consignment is a set of packets sent together to the same recipient in China.
 |**phone***     |11-digit      |Recipient mobile phone number              |
 |               |integer       |                                           |
 +---------------+--------------+-----------------------+-------------------+
-|cn_name        |string        |Recipient name in      |Optional Chinese   |
-|               |              |Chinese                |address for more   |
-+---------------+max length: 24+-----------------------+accurate delievery |
-|cn_city        |              |Recipient city in      |in China           |
+|cn_name        |string        |Recipient name in      |Chinese address.   |
 |               |              |Chinese                |                   |
-|               |              |                       |                   |
-+---------------+--------------+-----------------------+                   |
-|cn_street      |string        |Recipient street in    |                   |
++---------------+max length: 24+-----------------------+**Required** for   |
+|cn_city        |              |Recipient city in      |EMS products.      |
 |               |              |Chinese                |                   |
+|               |              |                       |Optional for other |
++---------------+--------------+-----------------------+products, allowing |
+|cn_street      |string        |Recipient street in    |more accurate      |
+|               |              |Chinese                |delievery in China.|
 |               |max length: 72|                       |                   |
 +---------------+--------------+-----------------------+-------------------+
+|cid            |string        |Recipient Chinese Citizen ID number        |
+|               |              |                                           |
+|               |length: 18    |**Required** only for EMS products.        |
++---------------+--------------+-------------------------------------------+
 |**packets***   |array         |List of packets.                           |
 |               |              |                                           |
 |               |              |Parcelforce global priority enforces that a|
