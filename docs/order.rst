@@ -60,15 +60,11 @@ Order
 +-----------------------+-------+--------------------------------------------------------------------+
 |pickup_time            |string |Date and time for collection, ignored for self delievery.           |
 |                       |       |                                                                    |
-|                       |       |Format: YYYY-MM-DDT00:00:00 Time is usually ignored and drivers     |
-|                       |       |may come any time on the requested date.                            |
+|                       |       |Format: YYYY-MM-DDT00:00:00 Time is usually ignored and drivers may |
+|                       |       |come any time on the requested date.                                |
 |                       |       |                                                                    |
 |                       |       |Collection date must be one of the next three work days not         |
 |                       |       |including today.                                                    |
-|                       |       |                                                                    |
-|                       |       |                                                                    |
-|                       |       |                                                                    |
-|                       |       |                                                                    |
 +-----------------------+-------+--------------------------------------------------------------------+
 |**consignments***      |array  |List of consignments                                                |
 +-----------------------+-------+--------------------------------------------------------------------+
@@ -111,7 +107,8 @@ A consignment is a set of packets sent together to the same recipient in China.
 +---------------+--------------+-----------------------+-------------------+
 |cid            |string        |Recipient Chinese Citizen ID number        |
 |               |              |                                           |
-|               |length: 18    |**Required** only for EMS products.        |
+|               |length: 18    |**Required** by EMS products for new       |
+|               |              |recipient. Optional otherwise.             |
 +---------------+--------------+-------------------------------------------+
 |**packets***   |array         |List of packets.                           |
 |               |              |                                           |
