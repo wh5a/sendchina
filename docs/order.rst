@@ -15,8 +15,9 @@ Order
 +-----------------------+-------+-----------------------+                                            |
 |label_url              |string |Path of the shipping   |                                            |
 |                       |       |label on the web server|                                            |
-|                       |       |if an order has been   |                                            |
-|                       |       |successfully processed.|                                            |
++-----------------------+-------+-----------------------+                                            |
+|processed              |boolean|If an order has been   |                                            |
+|                       |       |successfully processed |                                            |
 +-----------------------+-------+-----------------------+                                            |
 |total                  |float  |Total cost of an order |                                            |
 |                       |       |in pounds.             |                                            |
@@ -135,7 +136,11 @@ Packet
 |**height***    |              |                                           |
 +---------------+--------------+-------------------------------------------+
 |**contents***  |array         |List of contents                           |
-+---------------+--------------+-------------------------------------------+
++---------------+--------------+-------------------------------+-----------+
+|tracking_outer |string        |International tracking number  |Read only  |
++---------------+--------------+-------------------------------+           |
+|tracking_inner |string        |Domestic tracking number       |           |
++---------------+--------------+-------------------------------+-----------+
 
 
 Content

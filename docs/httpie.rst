@@ -100,6 +100,7 @@ different, unique number.
             }
         ],
         "id": 9390,
+        "label_url": "/static/labels/9390-57ab72f4-e852-40d3-85ec-499086d254b5-label.pdf",
         "name": "zhang san",
         "phone": "9",
         "pickup_time": "2014-05-05T10:00:00",
@@ -116,10 +117,19 @@ response body only. Your program, however, must check the HTTP status code in
 the response header which indicates success or failure of the order. If
 the order failed, the response body will contain helpful error messages.
 
+On success the server returns the order ``id`` and the
+``label_url``. The ``label_url`` lets you download the label from
+Send2China server. Note that the label generation will take some time
+while the order is being queued to be processed. Usually the label
+becomes available within a few minutes, but if for any reason, the
+label does not appear after a reasonable amount of delay, please
+contact Send2China administrators.
+
 Retrieving an order
 -------------------
 
-Once we have the order ``id``, we can query the server for the order's label URL:
+Once we have the order ``id``, we can query the server for its status,
+e.g. the label availability, and the tracking numbers.
 
 .. code-block:: sh
 
@@ -159,6 +169,8 @@ API token and showed its usage.
                     "street": "XIANG GANG JIU LONG BAN",
                     "street2": "SHAN HAO ZHAI 1 DONG FA",
                     "street3": "",
+                    "tracking_inner": "",
+                    "tracking_outer": "EA913905781BE",
                     "weight": 1.0,
                     "width": 3
                 }
@@ -171,6 +183,7 @@ API token and showed its usage.
     "phone": "9",
     "pickup_time": "2014-05-05T10:00:00",
     "postcode": "BN12 4HF",
+    "processed": true,
     "product_id": 1,
     "street": "2",
     "street2": "3",
@@ -178,11 +191,11 @@ API token and showed its usage.
     "total": "13.63"
   }
 
-The returned data now has an extra field ``label_url``, if Send2China
-server successfully produced the label. The ``label_url`` lets you
-download the label from Send2China server. If, for any reason, you
-succesfully created an order, but the ``label_url`` wasn't returned
-after a reasonable amount of delay, please contact Send2China
-administrators.
+The returned data now has an extra field ``processed`` for the order,
+to indicate if the label is available. For each packet there are also
+two extra fields ``tracking_outer`` and ``tracking_inner``. The former
+is the international tracking number, and the latter is the domestic
+tracking number. The domestic one is useful when the product has a
+separate domestic service in addition to the international service.
 
 Next, we will define order formally.
