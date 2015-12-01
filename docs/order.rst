@@ -16,6 +16,13 @@ Order
 |label_url              |string |Path of the shipping   |                                            |
 |                       |       |label on the web server|                                            |
 +-----------------------+-------+-----------------------+                                            |
+|domestic_url           |string |Path of the domestic   |                                            |
+|                       |       |label                  |                                            |
+|                       |       |(empty if not          |                                            |
+|                       |       |applicable)            |                                            |
++-----------------------+-------+-----------------------+                                            |
+|cn23_url               |string |Path of the CN23       |                                            |
++-----------------------+-------+-----------------------+                                            |
 |processed              |boolean|If an order has been   |                                            |
 |                       |       |successfully processed |                                            |
 +-----------------------+-------+-----------------------+                                            |
