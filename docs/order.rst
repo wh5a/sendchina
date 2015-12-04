@@ -66,7 +66,7 @@ Order
 |                       |length:|                                                                    |
 |                       |50     |                                                                    |
 +-----------------------+-------+--------------------------------------------------------------------+
-|pickup_time            |string |Date and time for collection, ignored for self delievery.           |
+|pickup_time            |string |Date and time for collection, ignored for self delivery.            |
 |                       |       |                                                                    |
 |                       |       |Format: YYYY-MM-DDT00:00:00 Time is usually ignored and drivers may |
 |                       |       |come any time on the requested date.                                |
@@ -110,7 +110,7 @@ A consignment is a set of packets sent together to the same recipient in China.
 |               |              |                       |Optional for other |
 +---------------+--------------+-----------------------+products, allowing |
 |cn_street      |string        |Recipient street in    |more accurate      |
-|               |              |Chinese                |delievery in China.|
+|               |              |Chinese                |delivery in China. |
 |               |max length: 72|                       |                   |
 +---------------+--------------+-----------------------+-------------------+
 |cid            |string        |Recipient Chinese Citizen ID number        |
