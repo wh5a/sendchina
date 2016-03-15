@@ -83,49 +83,67 @@ Consignment
 
 A consignment is a set of packets sent together to the same recipient in China.
 
-+---------------+--------------+-------------------------------------------+
-|Parameter      |Type          |Description                                |
-+===============+==============+===========================================+
-|**name***      |string        |Recipient name                             |
-+---------------+              +-------------------------------------------+
-|**street***    |max length:   |Recipient street address line 1            |
-+---------------+24            +-------------------------------------------+
-|street2        |              |Recipient street address line 2/3          |
-+---------------+              |                                           |
-|street3        |              |                                           |
-+---------------+              +-------------------------------------------+
-|**city***      |              |Recipient city                             |
-+---------------+--------------+-------------------------------------------+
-|**postcode***  |6-digit       |Recipient postcode                         |
-|               |integer       |                                           |
-+---------------+--------------+-------------------------------------------+
-|**phone***     |11-digit      |Recipient mobile phone number              |
-|               |integer       |                                           |
-+---------------+--------------+-----------------------+-------------------+
-|cn_name        |string        |Recipient name in      |Chinese address.   |
-|               |              |Chinese                |                   |
-+---------------+max length: 24+-----------------------+**Required** for   |
-|cn_city        |              |Recipient city in      |EMS products.      |
-|               |              |Chinese                |                   |
-|               |              |                       |Optional for other |
-+---------------+--------------+-----------------------+products, allowing |
-|cn_street      |string        |Recipient street in    |more accurate      |
-|               |              |Chinese                |delivery in China. |
-|               |max length: 72|                       |                   |
-+---------------+--------------+-----------------------+-------------------+
-|cid            |string        |Recipient Chinese Citizen ID number        |
-|               |              |                                           |
-|               |length: 18    |**Required** by EMS products for new       |
-|               |              |recipient. Optional otherwise.             |
-+---------------+--------------+-------------------------------------------+
-|**packets***   |array         |List of packets.                           |
-|               |              |                                           |
-|               |              |Parcelforce global priority enforces that a|
-|               |              |consignment has no more than three packets.|
-|               |              |Other products have no constraint since    |
-|               |              |price is charged on individual packets.    |
-|               |              |                                           |
-+---------------+--------------+-------------------------------------------+
++---------------+--------------+----------------------------------------------------------------------+
+|Parameter      |Type          |Description                                                           |
++===============+==============+======================================================================+
+|**name***      |string        |Recipient name                                                        |
++---------------+              +----------------------------------------------------------------------+
+|**street***    |max length:   |Recipient street address line 1                                       |
++---------------+24            +----------------------------------------------------------------------+
+|street2        |              |Recipient street address line 2/3                                     |
++---------------+              |                                                                      |
+|street3        |              |                                                                      |
++---------------+              +----------------------------------------------------------------------+
+|**city***      |              |Recipient city                                                        |
++---------------+--------------+----------------------------------------------------------------------+
+|**postcode***  |6-digit       |Recipient postcode                                                    |
+|               |integer       |                                                                      |
++---------------+--------------+----------------------------------------------------------------------+
+|**phone***     |11-digit      |Recipient mobile phone number                                         |
+|               |integer       |                                                                      |
++---------------+--------------+--------------------------------------------------+-------------------+
+|cn_name        |string        |Recipient name in                                 |Chinese address.   |
+|               |              |Chinese                                           |                   |
++---------------+max length: 24+--------------------------------------------------+**Required** for   |
+|cn_city        |              |Recipient city in                                 |EMS/B2C products.  |
+|               |              |Chinese                                           |                   |
+|               |              |                                                  |Optional for other |
++---------------+--------------+--------------------------------------------------+products, allowing |
+|cn_street      |string        |Recipient street in                               |more accurate      |
+|               |              |Chinese                                           |delivery in China. |
+|               |max length: 72|                                                  |                   |
++---------------+--------------+--------------------------------------------------+-------------------+
+|province       |string        |Province, cn_city, county combined together as 收 |Chinese address.   |
+|               |              |件人省市区                                        |                   |
+|               |max length: 20|                                                  |**Required** for   |
++---------------+--------------+For B2C products, these fields and the postcode   |B2C products.      |
+|county         |string        |must strictly match the tree in                   |                   |
+|               |              |`https://send2china.co.uk/static/b2c_addrs.txt    |Ignored otherwise. |
+|               |max length: 40|<https://send2china.co.uk/static/b2c_addrs.txt>`_.|                   |
+|               |              |                                                  |                   |
++---------------+--------------+--------------------------------------------------+-------------------+
+|cid            |string        |Recipient Chinese Citizen ID number                                   |
+|               |              |                                                                      |
+|               |length: 18    |**Required** by EMS/B2C products. Ignored                             |
+|               |              |otherwise.                                                            |
+|               |              |                                                                      |
+|               |              |For B2C products, the ID should belong to                             |
+|               |              |the person placing the order.                                         |
++---------------+--------------+----------------------------------------------------------------------+
+|cid_name       |string        |Legal Chinese name of the person placing                              |
+|               |              |the order. Must match cid.                                            |
+|               |max length: 10|                                                                      |
+|               |              |**Required** by B2C products.  Optional                               |
+|               |              |otherwise.                                                            |
++---------------+--------------+----------------------------------------------------------------------+
+|**packets***   |array         |List of packets.                                                      |
+|               |              |                                                                      |
+|               |              |Parcelforce global priority enforces that a                           |
+|               |              |consignment has no more than three packets.                           |
+|               |              |Other products have no constraint since                               |
+|               |              |price is charged on individual packets.                               |
+|               |              |                                                                      |
++---------------+--------------+----------------------------------------------------------------------+
 
 
 Packet
@@ -155,14 +173,18 @@ Content
 
 Used on customs declaration.
 
-+---------------+--------------+-----------------------+
-|Parameter      |Type          |Description            |
-+===============+==============+=======================+
-|**type***      |string        |Content description    |
-|               |              |                       |
-|               |max length: 30|                       |
-+---------------+--------------+-----------------------+
-|**quantity***  |integer       |Quantity               |
-+---------------+--------------+-----------------------+
-|**cost***      |float         |Unit cost in pounds    |
-+---------------+--------------+-----------------------+
++---------------+--------------+--------------------------------------------+
+|Parameter      |Type          |Description                                 |
++===============+==============+============================================+
+|**type***      |string        |Content description                         |
+|               |              |                                            |
+|               |max length: 30|***Important***: For B2C products, must     |
+|               |              |match the sku of one of the goods listed at |
+|               |              |`https://send2china.co.uk/api/1.0/goods/    |
+|               |              |<https://send2china.co.uk/api/1.0/goods/>`_.|
+|               |              |                                            |
++---------------+--------------+--------------------------------------------+
+|**quantity***  |integer       |Quantity                                    |
++---------------+--------------+--------------------------------------------+
+|**cost***      |float         |Unit cost in pounds                         |
++---------------+--------------+--------------------------------------------+

@@ -44,6 +44,7 @@ GET /orders/         Return a list of orders
 POST /orders/        Create and pay for an order
 GET /orders/id/      Get an order's details
 GET /products/       Return a list of products
+GET /goods/          Return a list of valid goods for B2C products
 ===============      ============
 
 
