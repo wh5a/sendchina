@@ -133,7 +133,7 @@ A consignment is a set of packets sent together to the same recipient in China.
 |cid_name       |string        |Legal Chinese name of the person placing                              |
 |               |              |the order. Must match cid.                                            |
 |               |max length: 10|                                                                      |
-|               |              |**Required** by B2C products.  Optional                               |
+|               |              |**Required** by B2C products.  Ignored                                |
 |               |              |otherwise.                                                            |
 +---------------+--------------+----------------------------------------------------------------------+
 |**packets***   |array         |List of packets.                                                      |
