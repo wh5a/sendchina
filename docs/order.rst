@@ -113,8 +113,8 @@ A consignment is a set of packets sent together to the same recipient in China.
 |               |              |Chinese                                           |delivery in China. |
 |               |max length: 72|                                                  |                   |
 +---------------+--------------+--------------------------------------------------+-------------------+
-|province       |string        |Province, cn_city, county combined together as 收 |Chinese address.   |
-|               |              |件人省市区                                        |                   |
+|province       |string        |Province, cn_city, county combined together as    |Chinese address.   |
+|               |              |收件人省市区                                      |                   |
 |               |max length: 20|                                                  |**Required** for   |
 +---------------+--------------+For B2C products, these fields and the postcode   |B2C products.      |
 |county         |string        |must strictly match the tree in                   |                   |
@@ -171,20 +171,29 @@ Packet
 Content
 -----------
 
-Used on customs declaration.
+Used on customs declaration. **Important**: For EMS/B2C products, due to strict
+regulation, only goods predefined in the system are allowed (see
+below), and their costs are also predetermined.
 
-+---------------+--------------+--------------------------------------------+
-|Parameter      |Type          |Description                                 |
-+===============+==============+============================================+
-|**type***      |string        |Content description                         |
-|               |              |                                            |
-|               |max length: 30|***Important***: For B2C products, must     |
-|               |              |match the sku of one of the goods listed at |
-|               |              |`https://send2china.co.uk/api/1.0/goods/    |
-|               |              |<https://send2china.co.uk/api/1.0/goods/>`_.|
-|               |              |                                            |
-+---------------+--------------+--------------------------------------------+
-|**quantity***  |integer       |Quantity                                    |
-+---------------+--------------+--------------------------------------------+
-|**cost***      |float         |Unit cost in pounds                         |
-+---------------+--------------+--------------------------------------------+
++---------------+--------------+------------------------------------------------+
+|Parameter      |Type          |Description                                     |
++===============+==============+================================================+
+|**type***      |string        |Content description                             |
+|               |              |                                                |
+|               |max length: 50|***Important***: For EMS products, must match   |
+|               |              |the name of one of the goods listed at          |
+|               |              |`https://send2china.co.uk/api/1.0/goods/ems/    |
+|               |              |<https://send2china.co.uk/api/1.0/goods/ems/>`_.|
+|               |              |                                                |
+|               |              |For B2C products, must match the sku of one of  |
+|               |              |the goods listed at                             |
+|               |              |`https://send2china.co.uk/api/1.0/goods/b2c/    |
+|               |              |<https://send2china.co.uk/api/1.0/goods/b2c/>`_.|
+|               |              |                                                |
+|               |              |                                                |
++---------------+--------------+------------------------------------------------+
+|**quantity***  |integer       |Quantity                                        |
++---------------+--------------+------------------------------------------------+
+|**cost***      |float         |Unit cost in pounds. Ignored by EMS/B2C products|
+|               |              |but still required for consistency.             |
++---------------+--------------+------------------------------------------------+
