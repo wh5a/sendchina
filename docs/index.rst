@@ -9,3 +9,4 @@ Contents:
    start
    httpie
    order
+   royal

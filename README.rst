@@ -45,6 +45,9 @@ POST /orders/        Create and pay for an order
 GET /orders/id/      Get an order's details
 GET /products/       Return a list of products
 GET /goods/          Return a list of valid goods for B2C products
+GET /royal/          Return a list of Royal Mail orders
+POST /royal/         Create and pay for a Royal Mail order
+GET /royal/id/       Get a Royal Mail order's details
 ===============      ============
 
 
