@@ -66,7 +66,7 @@ better security. The token should be included in the ``Authorization``
 HTTP header, and be prefixed by the string literal ``Token`` with
 whitespace separating the two strings. For example,
 
-``Authorization: Token 9944b09199c62bcf9418ad846dd0e4bbdfc6ee4b``
+``Authorization: Token 2886a473a9eff33e6b0268e3528fcc88857492aa``
 
 
 Testing API
