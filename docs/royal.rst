@@ -103,3 +103,31 @@ GET.
 +-----------------------+-------+--------------------------------------------------------------------+
 |**weight***            |integer|Weight (grams)                                                      |
 +-----------------------+-------+--------------------------------------------------------------------+
+
+Batch processing
+-------------
+
+You can ask for a combined label by sending a POST request to ``/api/1.0/royalbatch/``.
+
+.. code-block:: json
+   :caption: request.json
+
+   {
+       "numbers": ["WJ679491150GB", "WJ679491163GB", "WJ679491177GB"]
+   }
+
+.. code-block:: json
+   :caption: response.json
+
+   {
+       "label_url": "/static/labels/12a099c8b8fc7f9ba1503d47f1a5f49d.pdf"
+   }
+
+or
+
+.. code-block:: json
+   :caption: error.json
+
+   {
+       "error": "No valid tracking number"
+   }
