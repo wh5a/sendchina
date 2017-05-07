@@ -105,7 +105,7 @@ A consignment is a set of packets sent together to the same recipient in China.
 |cn_name        |string        |Recipient name in                                 |Chinese address.   |
 |               |              |Chinese                                           |                   |
 +---------------+max length: 24+--------------------------------------------------+**Required** for   |
-|cn_city        |              |Recipient city in                                 |EMS/B2C products.  |
+|cn_city        |              |Recipient city in                                 |SF/B2C products.   |
 |               |              |Chinese                                           |                   |
 |               |              |                                                  |Optional for other |
 +---------------+--------------+--------------------------------------------------+products, allowing |
@@ -124,7 +124,7 @@ A consignment is a set of packets sent together to the same recipient in China.
 +---------------+--------------+--------------------------------------------------+-------------------+
 |cid            |string        |Recipient Chinese Citizen ID number                                   |
 |               |              |                                                                      |
-|               |length: 18    |**Required** by EMS/B2C products. Ignored                             |
+|               |length: 18    |**Required** by SF/B2C products. Ignored                              |
 |               |              |otherwise.                                                            |
 |               |              |                                                                      |
 |               |              |For B2C products, the ID should belong to                             |
@@ -171,7 +171,7 @@ Packet
 Content
 -----------
 
-Used on customs declaration. **Important**: For EMS/B2C products, due to strict
+Used on customs declaration. **Important**: For SF/B2C products, due to strict
 regulation, only goods predefined in the system are allowed (see
 below), and their costs are also predetermined.
 
@@ -180,10 +180,10 @@ below), and their costs are also predetermined.
 +===============+==============+================================================+
 |**type***      |string        |Content description                             |
 |               |              |                                                |
-|               |max length: 50|***Important***: For EMS products, must match   |
+|               |max length: 50|***Important***: For SF products, must match    |
 |               |              |the name of one of the goods listed at          |
-|               |              |`https://send2china.co.uk/api/1.0/goods/ems/    |
-|               |              |<https://send2china.co.uk/api/1.0/goods/ems/>`_.|
+|               |              |`https://send2china.co.uk/api/1.0/goods/sf/     |
+|               |              |<https://send2china.co.uk/api/1.0/goods/sf/>`_. |
 |               |              |                                                |
 |               |              |For B2C products, must match the sku of one of  |
 |               |              |the goods listed at                             |
@@ -194,6 +194,6 @@ below), and their costs are also predetermined.
 +---------------+--------------+------------------------------------------------+
 |**quantity***  |integer       |Quantity                                        |
 +---------------+--------------+------------------------------------------------+
-|**cost***      |float         |Unit cost in pounds. Ignored by EMS/B2C products|
+|**cost***      |float         |Unit cost in pounds. Ignored by SF/B2C products |
 |               |              |but still required for consistency.             |
 +---------------+--------------+------------------------------------------------+
