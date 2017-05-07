@@ -116,7 +116,7 @@ A consignment is a set of packets sent together to the same recipient in China.
 |province       |string        |Province, cn_city, county combined together as    |Chinese address.   |
 |               |              |收件人省市区                                      |                   |
 |               |max length: 20|                                                  |**Required** for   |
-+---------------+--------------+For B2C products, these fields and the postcode   |B2C products.      |
++---------------+--------------+For SF/B2C products, these fields and the postcode|SF/B2C products.   |
 |county         |string        |must strictly match the tree in                   |                   |
 |               |              |`https://send2china.co.uk/static/b2c_addrs.txt    |Ignored otherwise. |
 |               |max length: 40|<https://send2china.co.uk/static/b2c_addrs.txt>`_.|                   |
@@ -127,7 +127,7 @@ A consignment is a set of packets sent together to the same recipient in China.
 |               |length: 18    |**Required** by SF/B2C products. Ignored                              |
 |               |              |otherwise.                                                            |
 |               |              |                                                                      |
-|               |              |For B2C products, the ID should belong to                             |
+|               |              |For SF products, the ID should belong to                              |
 |               |              |the person placing the order.                                         |
 +---------------+--------------+----------------------------------------------------------------------+
 |cid_name       |string        |Legal Chinese name of the person placing                              |
